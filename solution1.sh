@@ -34,8 +34,7 @@ tail Nc2OH.expr.sorted.tab
 curl https://biodataprog.github.io/programming-intro/data/D_mel.63B12.gbk > genbank.gbk
 
 #report number of CDS features (lines?) in genbank file
-awk '{print $1}' genbank.gbk > column1.gbk
-grep -c CDS column1.gbk
+awk '{print $1}' genbank.gbk | grep -c CDS
 
 #Print how many sequence alignments are 100% identical in the previously downloaded file EcoliYersinia.tab
 awk '$3 == 100' EcoliYersenia.tab | wc -l
@@ -48,7 +47,3 @@ curl https://biodataprog.github.io/programming-intro/data/codon_table.txt > codo
 
 #sort and uniq to print out number of codons that encode each amino acid
 sort -k3 codon_table.txt | cut -f3 | uniq -c
-
-
-
-
