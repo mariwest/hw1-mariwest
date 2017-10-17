@@ -46,8 +46,8 @@ awk '$3 >= 90' EcoliYersenia.tab | wc -l
 #obtain codon_table.txt file
 curl https://biodataprog.github.io/programming-intro/data/codon_table.txt > codon_table.txt
 
-#sort 
-sort -k3 codon_table.txt
+#sort and uniq to print out number of codons that encode each amino acid
+sort -k3 codon_table.txt | cut -f3 | uniq -c
 
 
 
